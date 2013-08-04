@@ -1,3 +1,8 @@
+# Multiprocessing handling to avoid atexit test runner failure
+try:
+    import multiprocessing
+except ImportError:
+    pass
 import os
 from setuptools import setup
 
