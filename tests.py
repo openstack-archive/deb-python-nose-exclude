@@ -97,35 +97,35 @@ class TestNoseExcludeDirs_Arg_Does_Not_Exist(PluginTester, unittest.TestCase):
     def test_proper_dirs_omitted(self):
         assert "FAILED" not in self.output
 
-class TestNoseExcludeFiles(PluginTester, unittest.TestCase):
-    """Test nose-exclude file"""
+class TestNoseExcludeTest(PluginTester, unittest.TestCase):
+    """Test nose-exclude a single test"""
 
     activate = "--exclude-test=test_dirs.unittest.tests.UnitTests.test_a"
     plugins = [NoseExclude()]
     suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
 
-    def test_file_excluded(self):
+    def test_test_excluded(self):
         assert 'Ran 1 test' in self.output
 
-class TestNoseExcludeFilesNegative(PluginTester, unittest.TestCase):
-    """Test nose-exclude file doesn't exclude unlisted tests"""
+class TestNoseExcludeTestNegative(PluginTester, unittest.TestCase):
+    """Test nose-exclude a test that does not exist"""
 
     activate = "--exclude-test=test_dirs.unittest.tests.UnitTests.does_not_exist"
     plugins = [NoseExclude()]
     suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
 
-    def test_file_excluded(self):
+    def test_test_excluded_negative(self):
         assert 'Ran 2 tests' in self.output
 
-class TestNoseExcludeMultipleFiles(PluginTester, unittest.TestCase):
-    """Test nose-exclude multiple files"""
+class TestNoseExcludeMultipleTest(PluginTester, unittest.TestCase):
+    """Test nose-exclude multiple tests"""
 
     activate = "--exclude-test=test_dirs.unittest.tests.UnitTests.test_a"
     args = ["--exclude-test=test_dirs.unittest.tests.UnitTests.test_b"]
     plugins = [NoseExclude()]
     suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
 
-    def test_files_excluded(self):
+    def test_tests_excluded(self):
         assert 'Ran 0 tests' in self.output
 
 class TestNoseExcludeTestViaFile(PluginTester, unittest.TestCase):
@@ -135,11 +135,11 @@ class TestNoseExcludeTestViaFile(PluginTester, unittest.TestCase):
     plugins = [NoseExclude()]
     suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
 
-    def test_files_excluded(self):
+    def test_tests_excluded(self):
         assert 'Ran 0 tests' in self.output
 
-class TestNoseExcludeDirAndFiles(PluginTester, unittest.TestCase):
-    """Test nose-exclude tests with a file"""
+class TestNoseExcludeDirAndTests(PluginTester, unittest.TestCase):
+    """Test nose-exclude tests with """
 
     activate = "--exclude-test=test_dirs.unittest.tests.UnitTests.test_a"
     args = [
@@ -153,7 +153,7 @@ class TestNoseExcludeDirAndFiles(PluginTester, unittest.TestCase):
     plugins = [NoseExclude()]
     suitepath = os.path.join(os.getcwd(), 'test_dirs')
 
-    def test_files_excluded(self):
+    def test_tests_excluded(self):
         assert 'Ran 1 test' in self.output
 
 
