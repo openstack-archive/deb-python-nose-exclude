@@ -138,6 +138,24 @@ class TestNoseExcludeTestViaFile(PluginTester, unittest.TestCase):
     def test_files_excluded(self):
         assert 'Ran 0 tests' in self.output
 
+class TestNoseExcludeDirAndFiles(PluginTester, unittest.TestCase):
+    """Test nose-exclude tests with a file"""
+
+    activate = "--exclude-test=test_dirs.unittest.tests.UnitTests.test_a"
+    args = [
+        "--exclude-dir=test_dirs/build",
+        "--exclude-dir=test_dirs/build2",
+        "--exclude-dir=test_dirs/fish",
+        "--exclude-dir=test_dirs/test_not_me",
+        "--exclude-dir=test_dirs/test_yes",
+        "--exclude-dir=test_dirs/test_yes2",
+    ]
+    plugins = [NoseExclude()]
+    suitepath = os.path.join(os.getcwd(), 'test_dirs')
+
+    def test_files_excluded(self):
+        assert 'Ran 1 test' in self.output
+
 
 if __name__ == '__main__':
     unittest.main()
