@@ -97,5 +97,47 @@ class TestNoseExcludeDirs_Arg_Does_Not_Exist(PluginTester, unittest.TestCase):
     def test_proper_dirs_omitted(self):
         assert "FAILED" not in self.output
 
+class TestNoseExcludeFiles(PluginTester, unittest.TestCase):
+    """Test nose-exclude file"""
+
+    activate = "--exclude-test=test_dirs.unittest.tests.UnitTests.test_a"
+    plugins = [NoseExclude()]
+    suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
+
+    def test_file_excluded(self):
+        assert 'Ran 1 test' in self.output
+
+class TestNoseExcludeFilesNegative(PluginTester, unittest.TestCase):
+    """Test nose-exclude file doesn't exclude unlisted tests"""
+
+    activate = "--exclude-test=test_dirs.unittest.tests.UnitTests.does_not_exist"
+    plugins = [NoseExclude()]
+    suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
+
+    def test_file_excluded(self):
+        assert 'Ran 2 tests' in self.output
+
+class TestNoseExcludeMultipleFiles(PluginTester, unittest.TestCase):
+    """Test nose-exclude multiple files"""
+
+    activate = "--exclude-test=test_dirs.unittest.tests.UnitTests.test_a"
+    args = ["--exclude-test=test_dirs.unittest.tests.UnitTests.test_b"]
+    plugins = [NoseExclude()]
+    suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
+
+    def test_files_excluded(self):
+        assert 'Ran 0 tests' in self.output
+
+class TestNoseExcludeTestViaFile(PluginTester, unittest.TestCase):
+    """Test nose-exclude tests with a file"""
+
+    activate = "--exclude-test-file=test_dirs/exclude_tests.txt"
+    plugins = [NoseExclude()]
+    suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
+
+    def test_files_excluded(self):
+        assert 'Ran 0 tests' in self.output
+
+
 if __name__ == '__main__':
     unittest.main()
