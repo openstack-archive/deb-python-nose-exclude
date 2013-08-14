@@ -101,7 +101,7 @@ class NoseExclude(Plugin):
             for d in exclude_param.split('\n'):
                 d = d.strip()
                 abs_d = self._force_to_abspath(d)
-                if abs_d:
+                if abs_d:   
                     self.exclude_dirs[abs_d] = True
 
         exclude_str = "excluding dirs: %s" % ",".join(self.exclude_dirs.keys())
@@ -125,6 +125,18 @@ class NoseExclude(Plugin):
             meth.im_class.__name__,
             meth.__name__)
 
+        if fqn in self.exclude_tests:
+            return False
+        else:
+            return None
+
+    def wantClass(self, cls):
+        """Check if method is eligible for test discovery.
+
+        We filter out the class using the "fully qualified" name
+        of the class. (e.g. <module path>.<class>)"""
+
+        fqn = '%s.%s' % (cls.__module__, cls.__name__)
         if fqn in self.exclude_tests:
             return False
         else:
