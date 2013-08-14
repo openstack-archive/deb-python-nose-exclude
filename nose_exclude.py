@@ -38,15 +38,15 @@ class NoseExclude(Plugin):
             "--exclude-test", action="append",
             dest="exclude_tests",
             default=env_tests,
-            help="Fully qualified tests to exclude from test discovery.")
+            help="Fully qualified name of test method or class to exclude \
+            from test discovery.")
 
         parser.add_option(
             "--exclude-test-file", type="string",
             dest="exclude_test_file",
             default=False,
-            help="A file containing a list of directories to exclude \
-                from test discovery. Paths can be relative to current \
-                working directory or an absolute path.")
+            help="A file containing a list of fully qualified names of \
+                test methods or classes to exclude from test discovery.")
 
     def _force_to_abspath(self, pathname):
         if os.path.isabs(pathname):
