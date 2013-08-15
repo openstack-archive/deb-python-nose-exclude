@@ -97,5 +97,21 @@ class TestNoseExcludeDirs_Arg_Does_Not_Exist(PluginTester, unittest.TestCase):
     def test_proper_dirs_omitted(self):
         assert "FAILED" not in self.output
 
+class TestNoseExcludeDirsNoseWorkingDir(PluginTester, unittest.TestCase):
+    """Test nose-exclude directories with Nose's working directory."""
+
+    activate = "--exclude-dir=test_not_me"
+    args = ["--where=test_dirs"]
+    plugins = [NoseExclude()]
+    suitepath = os.path.join(os.getcwd(), 'test_dirs')
+
+    def tearDown(self):
+        # Nose changes cwd to config.workingDir, need to reset it
+        import os
+        os.chdir(os.path.join(os.getcwd(), os.path.pardir))
+
+    def test_proper_dirs_omitted(self):
+        assert "FAILED" not in self.output
+
 if __name__ == '__main__':
     unittest.main()

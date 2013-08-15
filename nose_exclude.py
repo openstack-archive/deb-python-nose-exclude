@@ -31,11 +31,11 @@ class NoseExclude(Plugin):
                 working directory or an absolute path. \
                 [NOSE_EXCLUDE_DIRS_FILE]")
 
-    def _force_to_abspath(self, pathname):
+    def _force_to_abspath(self, pathname, root):
         if os.path.isabs(pathname):
             abspath = pathname
         else:
-            abspath = os.path.abspath(pathname)
+            abspath = os.path.abspath(os.path.join(root, pathname))
 
         if os.path.exists(abspath):
             return abspath
@@ -68,7 +68,12 @@ class NoseExclude(Plugin):
             return
 
         self.enabled = True
-        root = os.getcwd()
+        if conf and conf.workingDir:
+            # Use nose's working directory
+            root = conf.workingDir
+        else:
+            root = os.getcwd()
+
         log.debug('cwd: %s' % root)
 
         # Normalize excluded directory names for lookup
@@ -77,7 +82,7 @@ class NoseExclude(Plugin):
             # separated by some character (new line is good enough)
             for d in exclude_param.split('\n'):
                 d = d.strip()
-                abs_d = self._force_to_abspath(d)
+                abs_d = self._force_to_abspath(d, root)
                 if abs_d:
                     self.exclude_dirs[abs_d] = True
 
