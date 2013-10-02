@@ -4,6 +4,7 @@ from nose.plugins import Plugin
 
 log = logging.getLogger('nose.plugins.nose_exclude')
 
+
 class NoseExclude(Plugin):
 
     def options(self, parser, env=os.environ):
@@ -11,7 +12,7 @@ class NoseExclude(Plugin):
         super(NoseExclude, self).options(parser, env)
         env_dirs = []
         if 'NOSE_EXCLUDE_DIRS' in env:
-            exclude_dirs = env.get('NOSE_EXCLUDE_DIRS','')
+            exclude_dirs = env.get('NOSE_EXCLUDE_DIRS', '')
             env_dirs.extend(exclude_dirs.split(';'))
         parser.add_option(
             "--exclude-dir", action="append",
@@ -91,5 +92,3 @@ class NoseExclude(Plugin):
             return False
         else:
             return None
-
-
