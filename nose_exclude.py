@@ -41,7 +41,7 @@ class NoseExclude(Plugin):
         if os.path.exists(abspath):
             return abspath
         else:
-            log.warn('The following path was not found: %s' % pathname)
+            log.warning('The following path was not found: %s' % pathname)
 
     def _load_from_file(self, filename):
         infile = open(filename)
