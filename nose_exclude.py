@@ -115,11 +115,21 @@ class NoseExclude(Plugin):
         else:
             return None
 
+    def wantFunction(self, fun):
+        """Check if function is eligible for test discovery
+
+        Filter out tests based on: <module path>.<func name>
+        """
+        fqn = '%s.%s' % (fun.__module__, fun.__name__)
+        if fqn in self.exclude_tests:
+            return False
+        else:
+            return None
+
     def wantMethod(self, meth):
         """Check if method is eligible for test discovery. 
         
-        We filter out tests using the "fully qualified" test name, 
-        which is <module path>.<class>.<test name>
+        Filter out tests based on <module path>.<class>.<method name>
         """
         fqn = '%s.%s.%s' % (meth.im_class.__module__, 
             meth.im_class.__name__,
@@ -133,8 +143,7 @@ class NoseExclude(Plugin):
     def wantClass(self, cls):
         """Check if method is eligible for test discovery.
 
-        We filter out the class using the "fully qualified" name
-        of the class. (e.g. <module path>.<class>)"""
+        Filter out the class based on <module path>.<class name>"""
 
         fqn = '%s.%s' % (cls.__module__, cls.__name__)
         if fqn in self.exclude_tests:
