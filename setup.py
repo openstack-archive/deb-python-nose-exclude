@@ -24,7 +24,7 @@ setup(
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         ("License :: OSI Approved :: GNU Library or Lesser General "
-        "Public License (LGPL)"), 
+        "Public License (LGPL)"),
         "Topic :: Software Development :: Testing",
         "Programming Language :: Python",
         ],
