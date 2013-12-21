@@ -104,6 +104,24 @@ class TestNoseExcludeDirs_Arg_Does_Not_Exist(PluginTester, unittest.TestCase):
     def test_proper_dirs_omitted(self):
         assert "FAILED" not in self.output
 
+
+class TestNoseExcludeDirsNoseWorkingDir(PluginTester, unittest.TestCase):
+    """Test nose-exclude directories with Nose's working directory."""
+
+    activate = "--exclude-dir=test_not_me"
+    args = ["--where=test_dirs"]
+    plugins = [NoseExclude()]
+    suitepath = os.path.join(os.getcwd(), 'test_dirs')
+
+    def tearDown(self):
+        # Nose changes cwd to config.workingDir, need to reset it
+        import os
+        os.chdir(os.path.join(os.getcwd(), os.path.pardir))
+
+    def test_proper_dirs_omitted(self):
+        assert "FAILED" not in self.output
+
+
 class TestNoseExcludeTest(PluginTester, unittest.TestCase):
     """Test nose-exclude a single test"""
 
@@ -114,6 +132,7 @@ class TestNoseExcludeTest(PluginTester, unittest.TestCase):
     def test_test_excluded(self):
         assert 'Ran 2 tests' in self.output
 
+
 class TestNoseExcludeTestNegative(PluginTester, unittest.TestCase):
     """Test nose-exclude a test that does not exist"""
 
@@ -123,6 +142,7 @@ class TestNoseExcludeTestNegative(PluginTester, unittest.TestCase):
 
     def test_test_excluded_negative(self):
         assert 'Ran 3 tests' in self.output
+
 
 class TestNoseExcludeMultipleTest(PluginTester, unittest.TestCase):
     """Test nose-exclude multiple tests"""
@@ -138,6 +158,7 @@ class TestNoseExcludeMultipleTest(PluginTester, unittest.TestCase):
     def test_tests_excluded(self):
         assert 'Ran 0 tests' in self.output
 
+
 class TestNoseExcludeTestViaFile(PluginTester, unittest.TestCase):
     """Test nose-exclude tests with a file"""
 
@@ -147,6 +168,7 @@ class TestNoseExcludeTestViaFile(PluginTester, unittest.TestCase):
 
     def test_tests_excluded(self):
         assert 'Ran 1 test' in self.output
+
 
 class TestNoseExcludeDirAndTests(PluginTester, unittest.TestCase):
     """Test nose-exclude tests by specifying dirs and tests"""
@@ -166,6 +188,7 @@ class TestNoseExcludeDirAndTests(PluginTester, unittest.TestCase):
     def test_tests_excluded(self):
         assert 'Ran 2 tests' in self.output
 
+
 class TestNoseExcludeTestClass(PluginTester, unittest.TestCase):
     """Test nose-exclude tests by class"""
 
@@ -177,6 +200,7 @@ class TestNoseExcludeTestClass(PluginTester, unittest.TestCase):
     def test_tests_excluded(self):
         assert 'Ran 1 test' in self.output
 
+
 class TestNoseExcludeTestFunction(PluginTester, unittest.TestCase):
     """Test nose-exclude tests by function"""
 
@@ -187,6 +211,7 @@ class TestNoseExcludeTestFunction(PluginTester, unittest.TestCase):
 
     def test_tests_excluded(self):
         assert 'Ran 2 tests' in self.output
+
 
 class TestNoseExcludeTestModule(PluginTester, unittest.TestCase):
     """Test nose-exclude tests by module"""
