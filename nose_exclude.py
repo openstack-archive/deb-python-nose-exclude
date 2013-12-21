@@ -132,9 +132,12 @@ class NoseExclude(Plugin):
 
     def wantMethod(self, meth):
         """Filter out tests based on <module path>.<class>.<method name>"""
-        fqn = '%s.%s.%s' % (meth.im_class.__module__, meth.im_class.__name__,
-                            meth.__name__)
+        try:
+            cls = meth.im_class  # Don't test static methods
+        except AttributeError:
+            return False
 
+        fqn = '%s.%s.%s' % (cls.__module__, cls.__name__, meth.__name__)
         if fqn in self.exclude_tests:
             return False
         else:
@@ -142,7 +145,6 @@ class NoseExclude(Plugin):
 
     def wantClass(self, cls):
         """Filter out the class based on <module path>.<class name>"""
-
         fqn = '%s.%s' % (cls.__module__, cls.__name__)
         if fqn in self.exclude_tests:
             return False
