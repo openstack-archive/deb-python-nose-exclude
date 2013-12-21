@@ -181,5 +181,16 @@ class TestNoseExcludeTestFunction(PluginTester, unittest.TestCase):
     def test_tests_excluded(self):
         assert 'Ran 2 tests' in self.output
 
+class TestNoseExcludeTestModule(PluginTester, unittest.TestCase):
+    """Test nose-exclude tests by module"""
+
+    activate = "--exclude-test=test_dirs.unittest.test"
+
+    plugins = [NoseExclude()]
+    suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
+
+    def test_tests_excluded(self):
+        assert 'Ran 3 tests' in self.output
+
 if __name__ == '__main__':
     unittest.main()

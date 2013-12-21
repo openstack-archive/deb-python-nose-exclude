@@ -13,7 +13,7 @@ class NoseExclude(Plugin):
         env_tests = []
 
         if 'NOSE_EXCLUDE_DIRS' in env:
-            exclude_dirs = env.get('NOSE_EXCLUDE_DIRS','')
+            exclude_dirs = env.get('NOSE_EXCLUDE_DIRS', '')
             env_dirs.extend(exclude_dirs.split(';'))
 
         parser.add_option(
@@ -101,7 +101,7 @@ class NoseExclude(Plugin):
             for d in exclude_param.split('\n'):
                 d = d.strip()
                 abs_d = self._force_to_abspath(d)
-                if abs_d:   
+                if abs_d:
                     self.exclude_dirs[abs_d] = True
 
         exclude_str = "excluding dirs: %s" % ",".join(self.exclude_dirs.keys())
@@ -115,11 +115,15 @@ class NoseExclude(Plugin):
         else:
             return None
 
-    def wantFunction(self, fun):
-        """Check if function is eligible for test discovery
+    def wantModule(self, module):
+        """Filter out tests based on: <module path>.<module name>"""
+        if module.__name__ in self.exclude_tests:
+            return False
+        else:
+            return None
 
-        Filter out tests based on: <module path>.<func name>
-        """
+    def wantFunction(self, fun):
+        """Filter out tests based on: <module path>.<func name>"""
         fqn = '%s.%s' % (fun.__module__, fun.__name__)
         if fqn in self.exclude_tests:
             return False
@@ -127,13 +131,9 @@ class NoseExclude(Plugin):
             return None
 
     def wantMethod(self, meth):
-        """Check if method is eligible for test discovery. 
-        
-        Filter out tests based on <module path>.<class>.<method name>
-        """
-        fqn = '%s.%s.%s' % (meth.im_class.__module__, 
-            meth.im_class.__name__,
-            meth.__name__)
+        """Filter out tests based on <module path>.<class>.<method name>"""
+        fqn = '%s.%s.%s' % (meth.im_class.__module__, meth.im_class.__name__,
+                            meth.__name__)
 
         if fqn in self.exclude_tests:
             return False
@@ -141,9 +141,7 @@ class NoseExclude(Plugin):
             return None
 
     def wantClass(self, cls):
-        """Check if method is eligible for test discovery.
-
-        Filter out the class based on <module path>.<class name>"""
+        """Filter out the class based on <module path>.<class name>"""
 
         fqn = '%s.%s' % (cls.__module__, cls.__name__)
         if fqn in self.exclude_tests:
