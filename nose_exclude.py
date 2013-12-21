@@ -4,6 +4,7 @@ from nose.plugins import Plugin
 
 log = logging.getLogger('nose.plugins.nose_exclude')
 
+
 class NoseExclude(Plugin):
 
     def options(self, parser, env=os.environ):
@@ -57,13 +58,12 @@ class NoseExclude(Plugin):
         if os.path.exists(abspath):
             return abspath
         else:
-            log.warn('The following path was not found: %s' % pathname)
+            log.warning('The following path was not found: %s' % pathname)
 
     def _load_from_file(self, filename):
-        infile = open(filename)
-        new_list = [l.strip() for l in infile.readlines() if l.strip()
-                    and not l.startswith('#')]
-
+        with open(filename, 'r') as infile:
+            new_list = [l.strip() for l in infile.readlines() if l.strip()
+                        and not l.startswith('#')]
         return new_list
 
     def configure(self, options, conf):
@@ -90,7 +90,6 @@ class NoseExclude(Plugin):
             return
 
         self.enabled = True
-
         root = os.getcwd()
         log.debug('cwd: %s' % root)
 

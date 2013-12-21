@@ -23,7 +23,7 @@ setup(
     classifiers = [
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
-        ("License :: OSI Approved :: GNU Library or Lesser General " 
+        ("License :: OSI Approved :: GNU Library or Lesser General "
         "Public License (LGPL)"), 
         "Topic :: Software Development :: Testing",
         "Programming Language :: Python",
@@ -31,7 +31,7 @@ setup(
 
     py_modules = ['nose_exclude'],
     zip_safe = False,
-    
+
     entry_points = {
         'nose.plugins': ['nose_exclude = nose_exclude:NoseExclude']
         },
