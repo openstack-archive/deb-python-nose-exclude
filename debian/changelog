@@ -1,0 +1,5 @@
+python-nose-exclude (0.2.0-1) unstable; urgency=low
+
+  * Initial release. (Closes: #733132)
+
+ -- Thomas Goirand <zigo@debian.org>  Thu, 26 Dec 2013 13:25:52 +0800

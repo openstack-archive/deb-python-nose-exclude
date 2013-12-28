@@ -1,0 +1,42 @@
+Source: python-nose-exclude
+Section: python
+Priority: optional
+Maintainer: PKG OpenStack <openstack-devel@lists.alioth.debian.org>
+Uploaders: Julien Danjou <acid@debian.org>,
+           Thomas Goirand <zigo@debian.org>,
+           Mehdi Abaakouk <sileht@sileht.net>
+Build-Depends: debhelper (>= 9),
+               python-all (>= 2.6.6-3~),
+               python-nose,
+               python-setuptools,
+#               python3-all,
+#               python3-nose,
+#               python3-setuptools
+Standards-Version: 3.9.4
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=openstack/python-nose-exclude.git
+Vcs-Git: git://anonscm.debian.org/openstack/python-nose-exclude.git
+Homepage: http://bitbucket.org/kgrandis/nose-exclude
+
+Package: python-nose-exclude
+Architecture: all
+Pre-Depends: dpkg (>= 1.15.6~)
+Depends: ${misc:Depends}, ${python:Depends}
+Recommends: ${python:Recommends}
+Description: exclude specific directories from nosetests runs
+ nose-exclude is a Nose plugin that allows you to easily specify directories to
+ be excluded from testing. The --exclude-dir= option is made available after
+ installation of the plugin. The option may be used multiple times to exclude
+ multiple directories from testing. The directory paths provided may be
+ absolute or relative.
+
+#Package: python3-nose-exclude
+#Architecture: all
+#Pre-Depends: dpkg (>= 1.15.6~)
+#Depends: ${misc:Depends}, ${python3:Depends}
+#Recommends: ${python3:Recommends}
+#Description: exclude specific directories from nosetests runs
+# nose-exclude is a Nose plugin that allows you to easily specify directories to
+# be excluded from testing. The --exclude-dir= option is made available after
+# installation of the plugin. The option may be used multiple times to exclude
+# multiple directories from testing. The directory paths provided may be
+# absolute or relative.
