@@ -4,7 +4,7 @@ Source: http://bitbucket.org/kgrandis/nose-exclude
 
 Files: debian/*
 Copyright: (c) 2013, Thomas Goirand <zigo@debian.org>
-License: LGPL
+License: LGPL-2.1
 
 Files: *
 Copyright: (c) 2010-2013, Kurt Grandis
