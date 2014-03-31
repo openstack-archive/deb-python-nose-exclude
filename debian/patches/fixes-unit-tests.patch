@@ -1,0 +1,21 @@
+Description: Fixes unit tests
+ regression was introduced by this issue:
+ https://github.com/nose-devs/nose/issues/728
+Origin: other, https://bitbucket.org/kgrandis/nose-exclude/pull-request/6/issue-12-nose-131-now-handles-static/diff
+Author: victor stinner <victor.stinner@enovance.com>
+Bug-Debian: http://bugs.debian.org/743095
+Forwarded: https://bitbucket.org/kgrandis/nose-exclude/issue/12/the-test-suite-fails-with-nose-130
+Last-Update: 2014-03-31
+
+--- python-nose-exclude-0.2.0.orig/test_dirs/unittest/tests.py
++++ python-nose-exclude-0.2.0/test_dirs/unittest/tests.py
+@@ -7,9 +7,5 @@ class UnitTests(unittest.TestCase):
+     def test_b(self):
+         assert True
+ 
+-    @staticmethod
+-    def test_e(self):
+-        assert True
+-
+ def test_c():
+     assert True

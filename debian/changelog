@@ -1,3 +1,10 @@
+python-nose-exclude (0.2.0-2) unstable; urgency=medium
+
+  * Fixed test_dirs/unittest/tests.py which was making a lot of unit tests fail
+    (Closes: #743095).
+
+ -- Thomas Goirand <zigo@debian.org>  Mon, 31 Mar 2014 20:16:26 +0800
+
 python-nose-exclude (0.2.0-1) unstable; urgency=low
 
   * Initial release. (Closes: #733132)
