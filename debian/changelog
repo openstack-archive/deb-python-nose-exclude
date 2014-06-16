@@ -1,3 +1,18 @@
+python-nose-exclude (0.2.0-3) UNRELEASED; urgency=medium
+
+  * debian/control:
+    - Uncomment Python 3 Build-Depends.
+    - Uncomment python3-nose-exclude binary package stanza.
+    - Update both binary package stanzas.
+    - Add Build-Depends on dh-python.
+  * debian/rules:
+    - Switch to --buildsystem=pybuild
+    - Add --with python3.
+  * debian/watch:
+    - Fix url.
+
+ -- Barry Warsaw <barry@debian.org>  Mon, 16 Jun 2014 16:28:31 -0400
+
 python-nose-exclude (0.2.0-2) unstable; urgency=medium
 
   * Fixed test_dirs/unittest/tests.py which was making a lot of unit tests fail
