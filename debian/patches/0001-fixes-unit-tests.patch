@@ -1,0 +1,22 @@
+From: PKG OpenStack <openstack-devel@lists.alioth.debian.org>
+Date: Mon, 16 Jun 2014 17:15:16 -0400
+Subject: fixes-unit-tests
+
+---
+ test_dirs/unittest/tests.py | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/test_dirs/unittest/tests.py b/test_dirs/unittest/tests.py
+index f0552d5..ead4495 100644
+--- a/test_dirs/unittest/tests.py
++++ b/test_dirs/unittest/tests.py
+@@ -7,9 +7,5 @@ class UnitTests(unittest.TestCase):
+     def test_b(self):
+         assert True
+ 
+-    @staticmethod
+-    def test_e(self):
+-        assert True
+-
+ def test_c():
+     assert True
