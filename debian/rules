@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-export PYBUILD_NAME=nose_exclude
+export PYBUILD_NAME=nose-exclude
 
 UPSTREAM_GIT = hg::https://bitbucket.org/kgrandis/nose-exclude
 
