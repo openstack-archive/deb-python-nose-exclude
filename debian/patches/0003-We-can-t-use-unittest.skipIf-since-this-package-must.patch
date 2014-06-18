@@ -1,4 +1,4 @@
-From: Barry Warsaw <barry@ubuntu.com>
+From: Barry Warsaw <barry@debian.org>
 Date: Wed, 18 Jun 2014 14:00:14 -0400
 Subject: We can't use unittest.skipIf() since this package must be compatible
  with wheezy-backports,
