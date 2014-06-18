@@ -10,6 +10,10 @@ python-nose-exclude (0.2.0-3) UNRELEASED; urgency=medium
     - Add --with python3.
   * debian/watch:
     - Fix url.
+  * debian/patches:
+    - Renamed patches based on `gbp pq import`
+    - 0002-disable-tests-under-python3.patch: Added to disable broken
+      Python 3 tests for now.
 
  -- Barry Warsaw <barry@debian.org>  Mon, 16 Jun 2014 16:28:31 -0400
 
