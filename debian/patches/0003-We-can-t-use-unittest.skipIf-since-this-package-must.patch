@@ -1,0 +1,64 @@
+From: Barry Warsaw <barry@debian.org>
+Date: Wed, 18 Jun 2014 14:00:14 -0400
+Subject: We can't use unittest.skipIf() since this package must be compatible
+ with wheezy-backports,
+ and Python 2.6 in wheezy doesn't have unittest.skipIf().
+
+---
+ tests.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/tests.py b/tests.py
+index 7eed1ef..f0d76dc 100644
+--- a/tests.py
++++ b/tests.py
+@@ -133,8 +133,8 @@ class TestNoseExcludeTest(PluginTester, unittest.TestCase):
+     plugins = [NoseExclude()]
+     suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
+ 
+-    @unittest.skipIf(IS_PY3, 'issue 10')
+     def test_test_excluded(self):
++        if IS_PY3: return                           # upstream issue 10
+         assert 'Ran 2 tests' in self.output
+ 
+ 
+@@ -145,8 +145,8 @@ class TestNoseExcludeTestNegative(PluginTester, unittest.TestCase):
+     plugins = [NoseExclude()]
+     suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
+ 
+-    @unittest.skipIf(IS_PY3, 'issue 10')
+     def test_test_excluded_negative(self):
++        if IS_PY3: return                           # upstream issue 10
+         assert 'Ran 3 tests' in self.output
+ 
+ 
+@@ -191,8 +191,8 @@ class TestNoseExcludeDirAndTests(PluginTester, unittest.TestCase):
+     plugins = [NoseExclude()]
+     suitepath = os.path.join(os.getcwd(), 'test_dirs')
+ 
+-    @unittest.skipIf(IS_PY3, 'issue 10')
+     def test_tests_excluded(self):
++        if IS_PY3: return                           # upstream issue 10
+         assert 'Ran 2 tests' in self.output
+ 
+ 
+@@ -216,8 +216,8 @@ class TestNoseExcludeTestFunction(PluginTester, unittest.TestCase):
+     plugins = [NoseExclude()]
+     suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
+ 
+-    @unittest.skipIf(IS_PY3, 'issue 10')
+     def test_tests_excluded(self):
++        if IS_PY3: return                           # upstream issue 10
+         assert 'Ran 2 tests' in self.output
+ 
+ 
+@@ -229,8 +229,8 @@ class TestNoseExcludeTestModule(PluginTester, unittest.TestCase):
+     plugins = [NoseExclude()]
+     suitepath = os.path.join(os.getcwd(), 'test_dirs/unittest')
+ 
+-    @unittest.skipIf(IS_PY3, 'issue 10')
+     def test_tests_excluded(self):
++        if IS_PY3: return                           # upstream issue 10
+         assert 'Ran 3 tests' in self.output
+ 
+ if __name__ == '__main__':

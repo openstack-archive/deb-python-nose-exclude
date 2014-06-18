@@ -1,2 +1,3 @@
 0001-fixes-unit-tests.patch
 0002-disable-tests-under-python3.patch
+0003-We-can-t-use-unittest.skipIf-since-this-package-must.patch

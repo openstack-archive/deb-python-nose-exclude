@@ -1,10 +1,9 @@
-From: Barry Warsaw <barry@debian.org>
+From: Barry Warsaw <barry@debian.com>
 Date: Mon, 16 Jun 2014 17:46:15 -0400
 Subject: disable-tests-under-python3
-Bug: https://bitbucket.org/kgrandis/nose-exclude/issue/10/test-failures-with-python-3
 
 Disable tests which are currently broken upstream for Python 3.
-
+https://bitbucket.org/kgrandis/nose-exclude/issue/10/test-failures-with-python-3
 ---
  tests.py | 9 +++++++++
  1 file changed, 9 insertions(+)
