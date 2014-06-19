@@ -5,6 +5,7 @@ python-nose-exclude (0.2.0-3) unstable; urgency=medium
     - Uncomment python3-nose-exclude binary package stanza.
     - Update both binary package stanzas.
     - Add Build-Depends on dh-python.
+    - Add myself to Uploaders with permission.
   * debian/rules:
     - Switch to --buildsystem=pybuild
     - Add --with python3.
