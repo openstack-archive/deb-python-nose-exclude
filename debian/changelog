@@ -1,4 +1,4 @@
-python-nose-exclude (0.2.0-3) UNRELEASED; urgency=medium
+python-nose-exclude (0.2.0-3) unstable; urgency=medium
 
   * debian/control:
     - Uncomment Python 3 Build-Depends.
@@ -15,7 +15,7 @@ python-nose-exclude (0.2.0-3) UNRELEASED; urgency=medium
     - 0002-disable-tests-under-python3.patch: Added to disable broken
       Python 3 tests for now.
 
- -- Barry Warsaw <barry@debian.org>  Mon, 16 Jun 2014 16:28:31 -0400
+ -- Barry Warsaw <barry@debian.org>  Thu, 19 Jun 2014 12:01:29 -0400
 
 python-nose-exclude (0.2.0-2) unstable; urgency=medium
 
