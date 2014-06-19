@@ -1,7 +1,7 @@
 python-nose-exclude (0.2.0-3) unstable; urgency=medium
 
   * debian/control:
-    - Uncomment Python 3 Build-Depends.
+    - Uncomment Python 3 Build-Depends.  Closes: #751990
     - Uncomment python3-nose-exclude binary package stanza.
     - Update both binary package stanzas.
     - Add Build-Depends on dh-python.
