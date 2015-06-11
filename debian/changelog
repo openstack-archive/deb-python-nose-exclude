@@ -1,9 +1,9 @@
-python-nose-exclude (0.2.0-4) UNRELEASED; urgency=medium
+python-nose-exclude (0.2.0-4) unstable; urgency=medium
 
   * d/control: Bump Standards-Version with no other changes necessary.
   * d/watch: Use the pypi.debian.net redirector.
 
- -- Barry Warsaw <barry@debian.org>  Thu, 11 Jun 2015 14:00:27 -0400
+ -- Barry Warsaw <barry@debian.org>  Thu, 11 Jun 2015 14:22:55 -0400
 
 python-nose-exclude (0.2.0-3) unstable; urgency=medium
 
