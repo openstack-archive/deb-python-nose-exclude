@@ -5,7 +5,7 @@ Maintainer: PKG OpenStack <openstack-devel@lists.alioth.debian.org>
 Uploaders: Julien Danjou <acid@debian.org>,
            Thomas Goirand <zigo@debian.org>,
            Mehdi Abaakouk <sileht@sileht.net>,
-	   Barry Warsaw <barry@debian.org>
+           Barry Warsaw <barry@debian.org>
 Build-Depends: debhelper (>= 9),
                dh-python,
                python-all (>= 2.6.6-3~),
@@ -14,7 +14,7 @@ Build-Depends: debhelper (>= 9),
                python3-all,
                python3-nose,
                python3-setuptools
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 X-Python-Version: >= 2.6
 X-Python3-Version: >= 3.2
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=openstack/python-nose-exclude.git
