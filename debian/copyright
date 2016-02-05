@@ -2,12 +2,13 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: nose-exclude
 Source: http://bitbucket.org/kgrandis/nose-exclude
 
-Files: debian/*
-Copyright: (c) 2013, Thomas Goirand <zigo@debian.org>
-License: LGPL-2.1
-
 Files: *
 Copyright: (c) 2010-2013, Kurt Grandis
+License: LGPL-2.1
+
+Files: debian/*
+Copyright: (c) 2013, 2016, Thomas Goirand <zigo@debian.org>
+           (c) 2014-2015, Barry Warsaw <barry@debian.org>
 License: LGPL-2.1
 
 License: LGPL-2.1

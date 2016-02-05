@@ -5,6 +5,7 @@ python-nose-exclude (0.4.1-1) unstable; urgency=medium
   * Remove patch: 0001-fixes-unit-tests.patch.
   * Fix back unit testing (it wasn't testing anything with the pybuild black
     box that was wrongly using nose).
+  * Fixed debian/copyright ordering, years and holders.
 
  -- Thomas Goirand <zigo@debian.org>  Fri, 05 Feb 2016 14:37:11 +0800
 
