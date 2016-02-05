@@ -6,6 +6,13 @@ python-nose-exclude (0.4.1-1) unstable; urgency=medium
 
  -- Thomas Goirand <zigo@debian.org>  Fri, 05 Feb 2016 14:37:11 +0800
 
+python-nose-exclude (0.2.0-4) unstable; urgency=medium
+
+  * d/control: Bump Standards-Version with no other changes necessary.
+  * d/watch: Use the pypi.debian.net redirector.
+
+ -- Barry Warsaw <barry@debian.org>  Thu, 11 Jun 2015 14:22:55 -0400
+
 python-nose-exclude (0.2.0-3) unstable; urgency=medium
 
   * debian/control:
