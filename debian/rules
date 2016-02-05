@@ -2,7 +2,7 @@
 
 export PYBUILD_NAME=nose-exclude
 
-UPSTREAM_GIT = hg::https://bitbucket.org/kgrandis/nose-exclude
+UPSTREAM_GIT = git://github.com/kgrandis/nose-exclude
 -include /usr/share/openstack-pkg-tools/pkgos.make
 
 %:
