@@ -5,27 +5,26 @@ Maintainer: PKG OpenStack <openstack-devel@lists.alioth.debian.org>
 Uploaders: Julien Danjou <acid@debian.org>,
            Thomas Goirand <zigo@debian.org>,
            Mehdi Abaakouk <sileht@sileht.net>,
-	   Barry Warsaw <barry@debian.org>
+           Barry Warsaw <barry@debian.org>,
 Build-Depends: debhelper (>= 9),
                dh-python,
-               python-all (>= 2.6.6-3~),
+               python-all,
                python-nose,
                python-setuptools,
                python3-all,
                python3-nose,
-               python3-setuptools
-Standards-Version: 3.9.5
-X-Python-Version: >= 2.6
-X-Python3-Version: >= 3.2
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=openstack/python-nose-exclude.git
-Vcs-Git: git://anonscm.debian.org/openstack/python-nose-exclude.git
+               python3-setuptools,
+Standards-Version: 3.9.6
+Vcs-Browser: https://anonscm.debian.org/gitweb/?p=openstack/python-nose-exclude.git
+Vcs-Git: https://anonscm.debian.org/git/openstack/python-nose-exclude.git
 Homepage: http://bitbucket.org/kgrandis/nose-exclude
 
 Package: python-nose-exclude
 Architecture: all
-Pre-Depends: dpkg (>= 1.15.6~)
-Depends: ${misc:Depends}, ${python:Depends}
-Recommends: ${python:Recommends}
+Depends: python-nose,
+         ${misc:Depends},
+         ${python:Depends},
+Recommends: ${python:Recommends},
 Description: exclude specific directories from nosetests runs
  nose-exclude is a Nose plugin that allows you to easily specify directories to
  be excluded from testing. The --exclude-dir= option is made available after
@@ -37,9 +36,10 @@ Description: exclude specific directories from nosetests runs
 
 Package: python3-nose-exclude
 Architecture: all
-Pre-Depends: dpkg (>= 1.15.6~)
-Depends: ${misc:Depends}, ${python3:Depends}
-Recommends: ${python3:Recommends}
+Depends: python3-nose,
+         ${misc:Depends},
+         ${python3:Depends},
+Recommends: ${python3:Recommends},
 Description: exclude specific directories from nosetests runs
  nose-exclude is a Nose plugin that allows you to easily specify directories to
  be excluded from testing. The --exclude-dir= option is made available after
