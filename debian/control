@@ -24,7 +24,7 @@ Depends: python-nose,
          ${misc:Depends},
          ${python:Depends},
 Recommends: ${python:Recommends},
-Description: exclude specific directories from nosetests runs
+Description: exclude specific directories from nosetests runs - Python 2.7
  nose-exclude is a Nose plugin that allows you to easily specify directories to
  be excluded from testing. The --exclude-dir= option is made available after
  installation of the plugin. The option may be used multiple times to exclude
@@ -39,7 +39,7 @@ Depends: python3-nose,
          ${misc:Depends},
          ${python3:Depends},
 Recommends: ${python3:Recommends},
-Description: exclude specific directories from nosetests runs
+Description: exclude specific directories from nosetests runs - Python 3.x
  nose-exclude is a Nose plugin that allows you to easily specify directories to
  be excluded from testing. The --exclude-dir= option is made available after
  installation of the plugin. The option may be used multiple times to exclude
