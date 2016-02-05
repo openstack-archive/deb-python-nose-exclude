@@ -1,3 +1,0 @@
-0002-disable-tests-under-python3.patch
-0003-We-can-t-use-unittest.skipIf-since-this-package-must.patch
-0004-Fix-the-stupid-bypasses-because-of-weird-test-enviro.patch
