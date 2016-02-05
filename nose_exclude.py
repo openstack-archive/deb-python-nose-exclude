@@ -1,8 +1,16 @@
+from __future__ import unicode_literals
+
+import sys
 import os
 import logging
 from nose.plugins import Plugin
 
 log = logging.getLogger('nose.plugins.nose_exclude')
+
+if sys.version_info > (3,):
+    get_method_class = lambda x: x.__self__.__class__
+else:
+    get_method_class = lambda x: x.im_class
 
 
 class NoseExclude(Plugin):
@@ -18,7 +26,7 @@ class NoseExclude(Plugin):
             env_dirs.extend(exclude_dirs.split(';'))
 
         parser.add_option(
-            "--exclude-dir", action="append",
+            str("--exclude-dir"), action="append",
             dest="exclude_dirs",
             default=env_dirs,
             help="Directory to exclude from test discovery. \
@@ -27,7 +35,7 @@ class NoseExclude(Plugin):
                 times. [NOSE_EXCLUDE_DIRS]")
 
         parser.add_option(
-            "--exclude-dir-file", type="string",
+            str("--exclude-dir-file"), type="string",
             dest="exclude_dir_file",
             default=env.get('NOSE_EXCLUDE_DIRS_FILE', False),
             help="A file containing a list of directories to exclude \
@@ -36,14 +44,14 @@ class NoseExclude(Plugin):
                 [NOSE_EXCLUDE_DIRS_FILE]")
 
         parser.add_option(
-            "--exclude-test", action="append",
+            str("--exclude-test"), action="append",
             dest="exclude_tests",
             default=env_tests,
             help="Fully qualified name of test method or class to exclude \
             from test discovery.")
 
         parser.add_option(
-            "--exclude-test-file", type="string",
+            str("--exclude-test-file"), type="string",
             dest="exclude_test_file",
             default=False,
             help="A file containing a list of fully qualified names of \
@@ -108,11 +116,14 @@ class NoseExclude(Plugin):
                 if abs_d:
                     self.exclude_dirs[abs_d] = True
 
-        exclude_str = "excluding dirs: %s" % ",".join(self.exclude_dirs.keys())
+        exclude_str = "excluding dirs: %s" % ",".join(list(self.exclude_dirs.keys()))
         log.debug(exclude_str)
 
     def wantDirectory(self, dirname):
         """Check if directory is eligible for test discovery"""
+        # In case of symbolic paths
+        dirname = os.path.realpath(dirname)
+
         if dirname in self.exclude_dirs:
             log.debug("excluded: %s" % dirname)
             return False
@@ -137,7 +148,7 @@ class NoseExclude(Plugin):
     def wantMethod(self, meth):
         """Filter out tests based on <module path>.<class>.<method name>"""
         try:
-            cls = meth.im_class  # Don't test static methods
+            cls = get_method_class(meth)
         except AttributeError:
             return False
 
