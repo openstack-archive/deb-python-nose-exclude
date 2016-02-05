@@ -1,5 +1,8 @@
 #!/usr/bin/make -f
 
+PYTHONS:=$(shell pyversions -vr)
+PYTHON3S:=$(shell py3versions -vr)
+
 export PYBUILD_NAME=nose-exclude
 
 UPSTREAM_GIT = git://github.com/kgrandis/nose-exclude
@@ -7,3 +10,12 @@ UPSTREAM_GIT = git://github.com/kgrandis/nose-exclude
 
 %:
 	dh $@ --with python2,python3 --buildsystem=pybuild
+
+ifeq (,$(findstring nocheck, $(DEB_BUILD_OPTIONS)))
+override_dh_auto_test:
+	set -e ; set -x ; for i in $(PYTHONS) $(PYTHON3S) ; do \
+		PYMAJOR=`echo $$i | cut -d'.' -f1` ; \
+		echo "===> Testing with python$$i (python$$PYMAJOR)" ; \
+		python$$i setup.py test ; \
+	done
+endif
