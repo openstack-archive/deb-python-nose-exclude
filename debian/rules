@@ -5,7 +5,7 @@ PYTHON3S:=$(shell py3versions -vr)
 
 export PYBUILD_NAME=nose-exclude
 
-UPSTREAM_GIT = git://github.com/kgrandis/nose-exclude
+UPSTREAM_GIT := https://github.com/kgrandis/nose-exclude
 -include /usr/share/openstack-pkg-tools/pkgos.make
 
 %:
